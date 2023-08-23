@@ -12,4 +12,5 @@ public interface IUserService
     Task<UserDto?> AuthenticateAsync(string email, string password);
     Task<UserDto?> GetByIdAsync(int id);
     Task<List<UserDto>> GetAllAsync();
+    Task<UserDto?> CreateAsync(NewUserDto dto);
 }

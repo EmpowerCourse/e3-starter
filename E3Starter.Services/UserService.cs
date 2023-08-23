@@ -11,12 +11,14 @@ public class UserService : IUserService
     private readonly ICryptoService _cryptoService;
     private readonly IUserRepository _userRepository;
     private readonly IMapper _mapper;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public UserService(ICryptoService cryptoService, IUserRepository userRepository, IMapper mapper)
+    public UserService(ICryptoService cryptoService, IUserRepository userRepository, IMapper mapper, IUnitOfWork unitOfWork)
     {
         _cryptoService = cryptoService;
         _userRepository = userRepository;
         _mapper = mapper;
+        _unitOfWork = unitOfWork;
     }
 
     public async Task<UserDto?> AuthenticateAsync(string email, string password)
@@ -39,5 +41,31 @@ public class UserService : IUserService
     {
         var user = await _userRepository.GetAsync<User>(id);
         return _mapper.Map<UserDto>(user);
+    }
+
+    public async Task<UserDto?> CreateAsync(NewUserDto dto)
+    {
+        _unitOfWork.Begin();
+        var newUser = new User();
+        var salt = _cryptoService.GenerateSalt();
+        newUser.Username = dto.Username;
+        newUser.Email = dto.Email;
+        newUser.PasswordSalt = salt;
+        newUser.HashedPassword = _cryptoService.HashPassword(dto.Password, salt);
+        newUser.CreatedAt = DateTime.UtcNow;
+        newUser.Roles = new List<Role>();
+
+        foreach (var role in dto.Roles)
+        {
+            var roleModel = await _userRepository.LoadAsync<Role>(role.Id);
+            newUser.Roles.Add(roleModel);
+            roleModel.Users.Add(newUser);
+            await _userRepository.SaveAsync(roleModel);
+        }
+
+        await _userRepository.SaveAsync(newUser);
+        _unitOfWork.Commit();
+
+        return _mapper.Map<UserDto?>(newUser);
     }
 }

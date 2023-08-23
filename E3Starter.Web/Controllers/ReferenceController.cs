@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using E3Starter.Configuration;
 using E3Starter.Contracts.Services;
-using E3Starter.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using ControllerBase = E3Starter.Web.Controllers.Base.ControllerBase;
@@ -12,12 +11,17 @@ namespace E3Starter.Web.Controllers;
 [ApiController]
 public class ReferenceController : ControllerBase
 {
-    public ReferenceController(IOptions<AppSettings> options, IMapper mapper, IUserService userService) : base(options, mapper, userService)
-    { 
+    private readonly IReferenceService _referenceService;
+
+    public ReferenceController(IReferenceService referenceService, IOptions<AppSettings> options, IMapper mapper, IUserService userService) : base(options, mapper, userService)
+    {
+        _referenceService = referenceService;
     }
 
-    public IActionResult Index()
+    [HttpGet("getroles")]
+    public async Task<IActionResult> GetRoles()
     {
-        return Ok();
+        var roles = await _referenceService.GetRolesAsync();
+        return Ok(roles);
     }
 }
