@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34003.232
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Web", "E3Starter.Web\E3Starter.Web.csproj", "{1E8692D0-BC16-468B-8288-6145A22EFCB9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Web", "E3Starter.Web\E3Starter.Web.csproj", "{1E8692D0-BC16-468B-8288-6145A22EFCB9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B4BA7E73-380B-4025-B0A5-E0B65606BD78}"
 EndProject
@@ -13,25 +13,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Persistence", "Persistence"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Utilities", "Utilities", "{94B565A4-26CF-4661-B802-061302EAA608}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Contracts.Services", "E3Starter.Contracts.Services\E3Starter.Contracts.Services.csproj", "{F5A09E2B-05E2-4CB1-9108-6B482D6A062C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Contracts.Services", "E3Starter.Contracts.Services\E3Starter.Contracts.Services.csproj", "{F5A09E2B-05E2-4CB1-9108-6B482D6A062C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Services", "E3Starter.Services\E3Starter.Services.csproj", "{FD4F2F12-80EF-45D7-9636-A23A905ED34B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Services", "E3Starter.Services\E3Starter.Services.csproj", "{FD4F2F12-80EF-45D7-9636-A23A905ED34B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Contracts.Persistence", "E3Starter.Contracts.Persistence\E3Starter.Contracts.Persistence.csproj", "{91F968AF-66D8-4AFD-8FD7-2625AFAE9AD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Contracts.Persistence", "E3Starter.Contracts.Persistence\E3Starter.Contracts.Persistence.csproj", "{91F968AF-66D8-4AFD-8FD7-2625AFAE9AD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Persistence.NHIbernate", "E3Starter.Persistence.NHIbernate\E3Starter.Persistence.NHIbernate.csproj", "{9D9D0EDD-94D5-49D3-B7A9-4564B841ADCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Persistence.NHIbernate", "E3Starter.Persistence.NHIbernate\E3Starter.Persistence.NHIbernate.csproj", "{9D9D0EDD-94D5-49D3-B7A9-4564B841ADCC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Migrations", "E3Starter.Migrations\E3Starter.Migrations.csproj", "{E9DB691F-3DD8-4EEF-BBEF-3EAA4A3513F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Migrations", "E3Starter.Migrations\E3Starter.Migrations.csproj", "{E9DB691F-3DD8-4EEF-BBEF-3EAA4A3513F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Dtos", "E3Starter.Dtos\E3Starter.Dtos.csproj", "{B5CE0E8A-8BB1-4E49-BD65-1347E862EBCE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Dtos", "E3Starter.Dtos\E3Starter.Dtos.csproj", "{B5CE0E8A-8BB1-4E49-BD65-1347E862EBCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Configuration", "E3Starter.Configuration\E3Starter.Configuration.csproj", "{00390961-E07F-4D83-8003-6DE962722C20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Configuration", "E3Starter.Configuration\E3Starter.Configuration.csproj", "{00390961-E07F-4D83-8003-6DE962722C20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Criteria", "E3Starter.Criteria\E3Starter.Criteria.csproj", "{4ED0B636-66B7-4EEC-81C3-43BA8C50D4F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Criteria", "E3Starter.Criteria\E3Starter.Criteria.csproj", "{4ED0B636-66B7-4EEC-81C3-43BA8C50D4F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.Models", "E3Starter.Models\E3Starter.Models.csproj", "{29A96C19-33D5-4ACA-BE42-731B26004B2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.Models", "E3Starter.Models\E3Starter.Models.csproj", "{29A96C19-33D5-4ACA-BE42-731B26004B2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "E3Starter.MigrationRunner", "E3Starter.MigrationRunner\E3Starter.MigrationRunner.csproj", "{231C6D50-1589-4CDB-BF6C-69C9424E0656}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E3Starter.MigrationRunner", "E3Starter.MigrationRunner\E3Starter.MigrationRunner.csproj", "{231C6D50-1589-4CDB-BF6C-69C9424E0656}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

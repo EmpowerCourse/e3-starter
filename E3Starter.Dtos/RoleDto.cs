@@ -10,4 +10,5 @@ namespace E3Starter.Dtos;
 public class RoleDto : BaseEntityDto
 {
     public string Name { get; set; }
+   
 }

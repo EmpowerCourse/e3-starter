@@ -1,26 +1,31 @@
 ﻿using E3Starter.Configuration;
 using E3Starter.Contracts.Services;
 using E3Starter.Dtos;
+using E3Starter.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
+using System.ComponentModel.Design;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using IReferenceService = E3Starter.Contracts.Services.IReferenceService;
 
 namespace E3Starter.Web.Controllers;
 
-[Route("api/[action]")]
-[ApiController]
-public class PublicController : ControllerBase
+[Route("api/[controller]")]
+public class PublicController : Controller
 {
     private readonly AppSettings _appSettings;
     private readonly IUserService _userService;
+    private readonly IReferenceService _referenceService;
 
-    public PublicController(IOptions<AppSettings> options, IUserService userService)
+    public PublicController(IOptions<AppSettings> options, IUserService userService,IReferenceService referenceService)
     {
         _appSettings = options.Value;
         _userService = userService;
+        _referenceService = referenceService;
     }
 
     [HttpPost]
@@ -56,4 +61,65 @@ public class PublicController : ControllerBase
         var tokenString = tokenHandler.WriteToken(token);
         return tokenString;
     }
+
+    [HttpGet("[action]")]
+    public async Task<List<TaskDto>> GetTaskList()
+    {
+        try
+        {
+            var data = await _referenceService.GetTaskList();
+            return data;
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "error getting task list");
+            return new List<TaskDto>();
+        }
+    }
+    
+    [HttpPost("[action]")]
+    public async Task<StatusCodeResult> SaveTask([FromBody]TaskDto newTask)
+    {
+        try
+        {
+            await _referenceService.SaveTask(newTask);
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "error getting task list");
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+    }
+    [HttpPost("[action]")]
+    public async Task<StatusCodeResult> ToggleCompleted([FromBody]TaskDto completedTask)
+    {
+        try
+        {
+            await _referenceService.ToggleCompleted(completedTask);
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "error marking complete");
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+    }
+    [HttpPost("[action]")]
+    public async Task<StatusCodeResult> DeactivateTask([FromBody]TaskDto deactivatedTask)
+    {
+        try
+        {
+            await _referenceService.DeactivateTask(deactivatedTask);
+            return Ok();
+        }
+        catch (Exception ex)
+        {
+            Log.Error(ex, "error marking complete");
+            return new StatusCodeResult(StatusCodes.Status500InternalServerError);
+        }
+    }
+
+
+
 }
